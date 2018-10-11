@@ -12,6 +12,7 @@
 
 - [Install](#install)
 - [Configs](#configs)
+  - [Overriding config](#overriding-config)
 - [Scripts](#scripts)
   - [iamturns-js-toolbox format](#iamturns-js-toolbox-format)
   - [iamturns-js-toolbox lint](#iamturns-js-toolbox-lint)
@@ -38,15 +39,16 @@ Exported from main package:
 
 - `produceLintStagedConfig()`
 
-Example of overriding a config:
+### Overriding config
 
 ```javascript
-/* eslint-disable no-param-reassign */
-module.exports = produceExampleConfig(config => {
+produceExampleConfig(config => {
 	// https://github.com/mweststrate/immer
+	/* eslint-disable no-param-reassign */
 	config.exampleOverride = true
+	delete config.exampleOverride
+	/* eslint-enable no-param-reassign */
 })
-/* eslint-enable no-param-reassign */
 ```
 
 ## Scripts

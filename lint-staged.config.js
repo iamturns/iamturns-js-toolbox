@@ -1,11 +1,9 @@
 const { produceLintStagedConfig } = require("./src")
 
-module.exports = produceLintStagedConfig()
-
-// CONFIG OVERRIDE EXAMPLE
-
-// module.exports = produceLintStagedConfig(config => {
-/* eslint-disable no-param-reassign */
-// config.exampleOverride = true
-/* eslint-enable no-param-reassign */
-// })
+module.exports = produceLintStagedConfig(config => {
+	// https://github.com/mweststrate/immer
+	/* eslint-disable no-param-reassign */
+	config.exampleOverride = true
+	delete config.exampleOverride
+	/* eslint-enable no-param-reassign */
+})
