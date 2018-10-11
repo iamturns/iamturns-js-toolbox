@@ -1,10 +1,9 @@
-const debug = require("debug")("reset")
-
 const { isGitClean } = require("../utils/app")
 const { logError } = require("../utils/log")
 
 const { spawn } = require("../utils/spawn")
-const { setupProcess, getInstallCommand } = require("../utils/app")
+const { setupProcess } = require("../utils/app")
+const { getInstallCommand } = require("../utils/commands")
 
 setupProcess()
 
@@ -23,6 +22,4 @@ spawn({
 	args: ["reset", "--hard"],
 })
 
-const installCommand = getInstallCommand()
-debug("Install command: %j", installCommand)
-spawn(installCommand, { exitOnComplete: true })
+spawn(getInstallCommand(), { exitOnComplete: true })
