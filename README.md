@@ -12,8 +12,8 @@
 
 - [Install](#install)
 - [Configs](#configs)
-  - [lint-staged](#lint-staged)
   - [Prettier](#prettier)
+  - [lint-staged](#lint-staged)
 - [Scripts](#scripts)
   - [iamturns-js-toolbox format](#iamturns-js-toolbox-format)
   - [iamturns-js-toolbox lint](#iamturns-js-toolbox-lint)
@@ -36,25 +36,6 @@ npm install iamturns-js-toolbox --save-dev
 
 ## Configs
 
-### lint-staged
-
-- Format, lint, and test staged files
-- README.md staged? Update "Table of Contents" (using [doctoc](https://github.com/thlorenz/doctoc))
-
-Example `lint-staged.config.js` file:
-
-```javascript
-const { produceLintStagedConfig } = require("iamturns-js-toolbox")
-
-module.exports = produceLintStagedConfig(config => {
-  // https://github.com/mweststrate/immer
-  /* eslint-disable no-param-reassign */
-  config.exampleOverride = true
-  delete config.exampleOverride
-  /* eslint-enable no-param-reassign */
-})
-```
-
 ### Prettier
 
 - Default settings with exceptions:
@@ -72,6 +53,25 @@ Example `prettier.config.js` file:
 const { producePrettierConfig } = require("iamturns-js-toolbox")
 
 module.exports = producePrettierConfig(config => {
+  // https://github.com/mweststrate/immer
+  /* eslint-disable no-param-reassign */
+  config.exampleOverride = true
+  delete config.exampleOverride
+  /* eslint-enable no-param-reassign */
+})
+```
+
+### lint-staged
+
+- Format, lint, and test staged files
+- README.md staged? Update "Table of Contents" (using [doctoc](https://github.com/thlorenz/doctoc))
+
+Example `lint-staged.config.js` file:
+
+```javascript
+const { produceLintStagedConfig } = require("iamturns-js-toolbox")
+
+module.exports = produceLintStagedConfig(config => {
   // https://github.com/mweststrate/immer
   /* eslint-disable no-param-reassign */
   config.exampleOverride = true
