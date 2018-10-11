@@ -1,6 +1,11 @@
-// Some settings automatically inherited from ./editorconfig
+// Some settings automatically inherited from .editorconfig
 
-module.exports = {
-	semi: false,
-	trailingComma: "all",
-}
+const { producePrettierConfig } = require("./src")
+
+module.exports = producePrettierConfig(config => {
+	// https://github.com/mweststrate/immer
+	/* eslint-disable no-param-reassign */
+	config.exampleOverride = true
+	delete config.exampleOverride
+	/* eslint-enable no-param-reassign */
+})
