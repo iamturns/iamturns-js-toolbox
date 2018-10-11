@@ -2,6 +2,7 @@
 
 > Toolbox for my JavaScript projects
 
+- Sensible default configs for lint-staged (more coming soon)
 - Useful scripts: format, lint, validate, pre-commit, upgrade, reinstall, reset
 
 ## Table of Contents
@@ -10,6 +11,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Install](#install)
+- [Configs](#configs)
 - [Scripts](#scripts)
   - [iamturns-js-toolbox format](#iamturns-js-toolbox-format)
   - [iamturns-js-toolbox lint](#iamturns-js-toolbox-lint)
@@ -28,6 +30,23 @@
 
 ```bash
 npm install iamturns-js-toolbox --save-dev
+```
+
+## Configs
+
+Exported from main package:
+
+- `produceLintStagedConfig()`
+
+Example of overriding a config:
+
+```javascript
+/* eslint-disable no-param-reassign */
+module.exports = produceExampleConfig(config => {
+	// https://github.com/mweststrate/immer
+	config.exampleOverride = true
+})
+/* eslint-enable no-param-reassign */
 ```
 
 ## Scripts
