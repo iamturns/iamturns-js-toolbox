@@ -2,7 +2,7 @@
 
 > Toolbox for my JavaScript projects
 
-- Sensible default configs for lint-staged (more coming soon)
+- Sensible default configs for Prettier, lint-staged (more coming soon)
 - Useful scripts: format, lint, validate, pre-commit, upgrade, reinstall, reset
 
 ## Table of Contents
@@ -13,6 +13,7 @@
 - [Install](#install)
 - [Configs](#configs)
   - [lint-staged](#lint-staged)
+  - [Prettier](#prettier)
 - [Scripts](#scripts)
   - [iamturns-js-toolbox format](#iamturns-js-toolbox-format)
   - [iamturns-js-toolbox lint](#iamturns-js-toolbox-lint)
@@ -46,11 +47,36 @@ Example `lint-staged.config.js` file:
 const { produceLintStagedConfig } = require("iamturns-js-toolbox")
 
 module.exports = produceLintStagedConfig(config => {
-	// https://github.com/mweststrate/immer
-	/* eslint-disable no-param-reassign */
-	config.exampleOverride = true
-	delete config.exampleOverride
-	/* eslint-enable no-param-reassign */
+  // https://github.com/mweststrate/immer
+  /* eslint-disable no-param-reassign */
+  config.exampleOverride = true
+  delete config.exampleOverride
+  /* eslint-enable no-param-reassign */
+})
+```
+
+### Prettier
+
+- Default settings with exceptions:
+  - No semi colons
+    - Why include an unnecessary character at the end of every line? Break the habit (automatically)!
+  - Trailing commas
+    - Helps with git merging and conflict resolution
+- Ensure .editorconfig is parsed as YAML
+
+Example `prettier.config.js` file:
+
+```javascript
+// Some settings automatically inherited from .editorconfig
+
+const { producePrettierConfig } = require("iamturns-js-toolbox")
+
+module.exports = producePrettierConfig(config => {
+  // https://github.com/mweststrate/immer
+  /* eslint-disable no-param-reassign */
+  config.exampleOverride = true
+  delete config.exampleOverride
+  /* eslint-enable no-param-reassign */
 })
 ```
 
