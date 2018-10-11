@@ -12,7 +12,7 @@
 
 - [Install](#install)
 - [Configs](#configs)
-  - [Overriding config](#overriding-config)
+  - [lint-staged](#lint-staged)
 - [Scripts](#scripts)
   - [iamturns-js-toolbox format](#iamturns-js-toolbox-format)
   - [iamturns-js-toolbox lint](#iamturns-js-toolbox-lint)
@@ -35,14 +35,17 @@ npm install iamturns-js-toolbox --save-dev
 
 ## Configs
 
-Exported from main package:
+### lint-staged
 
-- `produceLintStagedConfig()`
+- Format, lint, and test staged files
+- README.md staged? Update "Table of Contents" (using [doctoc](https://github.com/thlorenz/doctoc))
 
-### Overriding config
+Example `lint-staged.config.js` file:
 
 ```javascript
-produceExampleConfig(config => {
+const { produceLintStagedConfig } = require("iamturns-js-toolbox")
+
+module.exports = produceLintStagedConfig(config => {
 	// https://github.com/mweststrate/immer
 	/* eslint-disable no-param-reassign */
 	config.exampleOverride = true
