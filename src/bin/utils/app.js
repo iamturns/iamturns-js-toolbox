@@ -23,21 +23,8 @@ function isGitClean() {
 	return gitStatus.length === 0
 }
 
-function getInstallCommand(useYarn = isYarn()) {
-	if (useYarn) {
-		return {
-			cmd: "yarn",
-		}
-	}
-	return {
-		cmd: "npm",
-		args: ["install"],
-	}
-}
-
 module.exports = {
 	setupProcess,
 	isYarn,
 	isGitClean,
-	getInstallCommand,
 }

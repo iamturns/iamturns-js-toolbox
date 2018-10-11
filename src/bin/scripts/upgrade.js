@@ -1,10 +1,10 @@
 const path = require("path")
-const debug = require("debug")("upgrade")
 
 const { appDir } = require("../utils/path")
 const { rimraf } = require("../utils/fs")
 const { spawn } = require("../utils/spawn")
-const { setupProcess, isYarn, getInstallCommand } = require("../utils/app")
+const { setupProcess, isYarn } = require("../utils/app")
+const { getInstallCommand } = require("../utils/commands")
 const { logMessage } = require("../utils/log")
 
 setupProcess()
@@ -29,9 +29,7 @@ logMessage("Removing /node_modules")
 rimraf(path.join(appDir, "node_modules"))
 
 logMessage("Reinstalling dependencies")
-const installCommand = getInstallCommand(isYarnResponse)
-debug("Install command: %j", installCommand)
-spawn(installCommand)
+spawn(getInstallCommand(isYarnResponse))
 
 logMessage(
 	`
