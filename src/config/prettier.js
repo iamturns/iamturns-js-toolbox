@@ -1,6 +1,4 @@
-const { produce } = require("immer")
-
-const prettierConfig = {
+const createPrettierConfig = () => ({
 	// Why include an unnecessary character at the end of every line? Break the habit (automatically)!
 	semi: false,
 	// Trailing commas help with git merging and conflict resolution
@@ -11,12 +9,8 @@ const prettierConfig = {
 			options: { parser: "yaml" },
 		},
 	],
-}
-
-const producePrettierConfig = (producer = () => {}) =>
-	produce(prettierConfig, producer)
+})
 
 module.exports = {
-	prettierConfig,
-	producePrettierConfig,
+	createPrettierConfig,
 }

@@ -1,5 +1,3 @@
-const { produce } = require("immer")
-
 const jestConfigDefault = {
 	collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}"],
 	moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx"],
@@ -17,10 +15,8 @@ const jestConfigBrowser = {
 	testURL: "http://localhost",
 }
 
-const createJestConfig = ({ web = false, override = () => {} }) => {
-	const baseConfig = web ? jestConfigBrowser : jestConfigDefault
-	return produce(baseConfig, override)
-}
+const createJestConfig = ({ web = false }) =>
+	web ? jestConfigBrowser : jestConfigDefault
 
 module.exports = {
 	createJestConfig,
