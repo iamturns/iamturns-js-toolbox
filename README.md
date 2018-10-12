@@ -51,13 +51,6 @@ const { createJestConfig } = require("iamturns-js-toolbox")
 
 module.exports = createJestConfig({
   web: true, // default = false
-  override: config => {
-    // https://github.com/mweststrate/immer
-    /* eslint-disable no-param-reassign */
-    config.exampleOverride = true
-    delete config.exampleOverride
-    /* eslint-enable no-param-reassign */
-  },
 })
 ```
 
@@ -75,33 +68,26 @@ Example `prettier.config.js` file:
 ```javascript
 // Some settings automatically inherited from .editorconfig
 
-const { producePrettierConfig } = require("iamturns-js-toolbox")
+const { createPrettierConfig } = require("iamturns-js-toolbox")
 
-module.exports = producePrettierConfig(config => {
-  // https://github.com/mweststrate/immer
-  /* eslint-disable no-param-reassign */
-  config.exampleOverride = true
-  delete config.exampleOverride
-  /* eslint-enable no-param-reassign */
-})
+module.exports = createPrettierConfig()
 ```
 
 ### lint-staged
 
 - Format, lint, and test staged files
-- README.md staged? Update "Table of Contents" (using [doctoc](https://github.com/thlorenz/doctoc))
+- README.md changed? Update "Table of Contents" (using [doctoc](https://github.com/thlorenz/doctoc))
 
 Example `lint-staged.config.js` file:
 
 ```javascript
-const { produceLintStagedConfig } = require("iamturns-js-toolbox")
+const { createLintStagedConfig } = require("iamturns-js-toolbox")
 
-module.exports = produceLintStagedConfig(config => {
-  // https://github.com/mweststrate/immer
-  /* eslint-disable no-param-reassign */
-  config.exampleOverride = true
-  delete config.exampleOverride
-  /* eslint-enable no-param-reassign */
+module.exports = createLintStagedConfig({
+  skipDoctoc: true, // default = false
+  skipFormat: true, // default = false
+  skipLint: true, // default = false
+  skipTest: true, // default = false
 })
 ```
 
