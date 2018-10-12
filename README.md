@@ -2,8 +2,9 @@
 
 > Toolbox for my JavaScript projects
 
-- Sensible default configs for Prettier, lint-staged (more coming soon)
-- Useful scripts: format, lint, validate, pre-commit, upgrade, reinstall, reset
+- Sensible default configs for Jest, Prettier, and lint-staged
+- Useful scripts: format, lint, validate, upgrade, reinstall, and reset
+- TypeScript supported
 
 ## Table of Contents
 
@@ -12,6 +13,7 @@
 
 - [Install](#install)
 - [Configs](#configs)
+  - [Jest](#jest)
   - [Prettier](#prettier)
   - [lint-staged](#lint-staged)
 - [Scripts](#scripts)
@@ -35,6 +37,29 @@ npm install iamturns-js-toolbox --save-dev
 ```
 
 ## Configs
+
+### Jest
+
+- Collect coverage from src/
+- TypeScript support
+- Web mode, enables jsdom and sets testURL
+
+Example `jest.config.js` file:
+
+```javascript
+const { createJestConfig } = require("iamturns-js-toolbox")
+
+module.exports = createJestConfig({
+  web: true, // default = false
+  override: config => {
+    // https://github.com/mweststrate/immer
+    /* eslint-disable no-param-reassign */
+    config.exampleOverride = true
+    delete config.exampleOverride
+    /* eslint-enable no-param-reassign */
+  },
+})
+```
 
 ### Prettier
 

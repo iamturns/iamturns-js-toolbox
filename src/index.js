@@ -1,7 +1,9 @@
+const configJest = require("./config/jest.js")
 const configLintStaged = require("./config/lint-staged.js")
-const configPrettierStaged = require("./config/prettier.js")
+const configPrettier = require("./config/prettier.js")
 
 module.exports = {
+	...configJest,
 	...configLintStaged,
-	...configPrettierStaged,
+	...configPrettier,
 }
