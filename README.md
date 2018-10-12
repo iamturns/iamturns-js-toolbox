@@ -50,6 +50,7 @@ Example `jest.config.js` file:
 const { createJestConfig } = require("iamturns-js-toolbox")
 
 module.exports = createJestConfig({
+  srcPath: "app", // default = 'src'/
   web: true, // default = false
 })
 ```
