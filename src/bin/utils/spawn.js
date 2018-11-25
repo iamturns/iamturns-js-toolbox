@@ -2,6 +2,13 @@ const crossSpawn = require("cross-spawn")
 
 const debug = require("debug")("utils:spawn")
 
+function shouldExit(exitOnComplete, exitOnError, response) {
+	if (exitOnComplete) {
+		return true
+	}
+	return exitOnError && response.status !== 0
+}
+
 function spawn(
 	{ cmd, args, options = { stdio: "inherit" } },
 	{ exitOnComplete = false, exitOnError = true } = {},
@@ -21,13 +28,6 @@ function spawn(
 	}
 
 	return response
-}
-
-function shouldExit(exitOnComplete, exitOnError, response) {
-	if (exitOnComplete) {
-		return true
-	}
-	return exitOnError && response.status !== 0
 }
 
 module.exports = {

@@ -14,16 +14,14 @@ const yargsParser = require("yargs-parser")
 
 const { spawn } = require("../utils/spawn")
 const { setupProcess } = require("../utils/app")
+const { prettierFilesGlob } = require("../../shared/prettier")
 
 setupProcess()
 
 const args = process.argv.slice(2)
 const argsParsed = yargsParser(args)
 const argFiles = argsParsed._
-const prettierFiles =
-	argFiles.length !== 0
-		? argFiles
-		: ["**/*.{js,jsx,ts,tsx,css,scss,less,json,md,yml,yaml,qgl}"]
+const prettierFiles = argFiles.length !== 0 ? argFiles : [prettierFilesGlob]
 
 const formatResult = spawn({
 	cmd: "npx",

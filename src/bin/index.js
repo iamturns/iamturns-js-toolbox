@@ -7,8 +7,14 @@ const { setupProcess } = require("./utils/app")
 const { spawn } = require("./utils/spawn")
 const { logMessage, logError } = require("./utils/log")
 
-setupProcess()
-launch()
+function getScriptPath(scriptName) {
+	try {
+		const relativeScriptPath = path.join(__dirname, "./scripts", scriptName)
+		return require.resolve(relativeScriptPath)
+	} catch (error) {
+		return undefined
+	}
+}
 
 function launch() {
 	const [executor, bin, script, ...args] = process.argv
@@ -43,11 +49,5 @@ function launch() {
 	spawn(scriptCommand, { exitOnComplete: true })
 }
 
-function getScriptPath(scriptName) {
-	try {
-		const relativeScriptPath = path.join(__dirname, "./scripts", scriptName)
-		return require.resolve(relativeScriptPath)
-	} catch (error) {
-		return null
-	}
-}
+setupProcess()
+launch()
