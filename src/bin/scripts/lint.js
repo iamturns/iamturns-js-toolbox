@@ -18,7 +18,7 @@ const lintArgs =
 		? // Files are passed in, use args as provided
 		  args
 		: // Supplement args with all files
-		  [...args, "--", "./"]
+		  [...args, "--ext", ".js,.jsx,.ts,.tsx", "--", "./"]
 
 spawn(
 	{
