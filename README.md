@@ -1,3 +1,11 @@
+**WARNING!**
+
+This package is **deprecated**.
+
+Features have been migrated to [create-iamturns-app](https://github.com/iamturns/create-iamturns-app) and [iamturns-scripts](https://github.com/iamturns/iamturns-scripts).
+
+---
+
 # iamturns-js-toolbox
 
 > Toolbox for my JavaScript projects
